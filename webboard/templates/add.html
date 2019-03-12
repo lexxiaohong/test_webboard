@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="container">
+   
+    <form action="/insert" method = "POST" >
+        <div class="form-group">
+            <label for="id">ID :</label>
+            <input type="text" class="form-control" name="id_topic">
+        </div>
+        <div class="form-group">
+            <label for="name">Topic:</label>
+            <input type="text" class="form-control" name="topic">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Content :</label>
+            <input type="text" class="form-control" name="detail">
+        </div>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
+{% endblock %}

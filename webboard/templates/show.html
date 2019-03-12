@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+    <div class="container">
+        <h2>My Webboard</h2>
+        <p>detail</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Topic</th>
+                    <th>Detail</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                  {% for row in data %}
+                <tr>
+                    <td>{{ row["id_topic"]}}</td>
+                    <td><a href="/show_comment/{{ row["id_topic"] }}">{{ row["topic"]}}</a></td>
+                    <td>{{ row["detail"]}}</td>
+
+                    <td>
+                        <a href="/editpage/{{ row["id_topic"] }}" class="btn btn-warning" >Edit</a>
+
+                        <a href="/delete/{{ row["id_topic"] }}" class="btn btn-danger" >Delete</a></td>
+
+                </tr>
+                  {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="/add" class="btn btn-primary">เพิ่มรายชื่อใหม่</a>
+    </div>
+
+{% endblock %}

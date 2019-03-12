@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+    <div class="container">
+        <h2>หัวข้อที่ {{ select_data["id_topic"] }}</h2>
+        <h4>ชื่อหัวข้อ : {{ select_data["topic"] }}</h4>
+        <p>รายละเอียด : {{ select_data["detail"] }}</p>
+        
+        
+         <table class="table">
+            <thead>
+                <tr>
+                     <th>ID_Topic</th>
+                    <th>ID_Comment</th>
+                    <th>Comment</th>
+                    
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                  {% for row in comment_data %}
+                <tr>
+                    <td>{{ row["id_topic"]}}</td>
+                    <td>{{ row["id_comment"]}}</td>
+                   
+                    <td>{{ row["comment"]}}</td>
+
+                    <td>
+                        <a href="/edit_comment/{{ row["id_comment"] }}" class="btn btn-warning" >Edit</a>
+                    
+                 <!--       <a href="/delete_comment/{{ row["id_comment"] }}/{{ row["id_topic"] }}" class="btn btn-danger" >Delete</a></td> -->
+                 
+                             
+                            <a href="/delete_comment/{{ row["id_comment"]+"/"+row["id_topic"] }}"class="btn btn-danger" >Delete</a></td>
+                </tr>
+                  {% endfor %}
+            </tbody>
+        </table>
+        
+        
+        
+        
+    
+        
+        
+        <form action="/insert_comment" method = "POST" >
+            <div class="form-group">
+            
+            <input type="hidden" class="form-control" name="id_topic" value="{{ select_data["id_topic"] }}">
+        </div>
+        <div class="form-group">
+          <label for="comment">Add Comment here !!!</label>
+          <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
+        </div>
+        
+         <button type="submit" class="btn btn-default">Add comment</button>
+        </form>
+       <a href="/" class="btn btn-primary">Home</a>
+    </div>
+
+{% endblock %}
